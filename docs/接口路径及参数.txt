@@ -1,0 +1,79 @@
+接口路径及参数：
+添加订单（POST）
+http://localhost:8080/order/add
+测试数据：
+[
+    {
+        "id": 1,
+        "name": "摩卡",
+        "unitPrice": "10",
+        "created": 1596729600000,
+        "desc": "",
+        "updated": 1596729600000,
+        "ingredients": false,
+        "parentItemId" : 0
+    },
+    {
+        "id": 2,
+        "name": "卡普奇诺",
+        "unitPrice": "15",
+        "created": 1596729600000,
+        "desc": " ",
+        "updated": 1596729600000,
+        "ingredients": false,
+        "parentItemId" : 0
+    },
+    {
+        "id": 3,
+        "name": "美式",
+        "unitPrice": "18",
+        "created": 1596729600000,
+        "desc": "",
+        "updated": 1596729600000,
+        "ingredients": false,
+        "parentItemId" : 0
+    },
+    {
+        "id": 4,
+        "name": "糖",
+        "unitPrice": "1",
+        "created": 1596729600000,
+        "desc": "",
+        "updated": 1596729600000,
+        "ingredients": true,
+        "parentItemId" : 3
+    },
+    {
+        "id": 5,
+        "name": "牛奶",
+        "unitPrice": "8",
+        "created": 1596729600000,
+        "desc": "",
+        "updated": 1596729600000,
+        "ingredients": true,
+        "parentItemId" : 3
+    },
+    {
+        "id": 6,
+        "name": "奶盖",
+        "unitPrice": "12",
+        "created": 1596729600000,
+        "desc": "",
+        "updated": 1596729600000,
+        "ingredients": true,
+        "parentItemId" : 3
+    }
+]
+
+-----------------------------------
+获取订单状态（GET）
+http://localhost:8080/order/state/{id}
+-----------------------------------
+获取订单（GET）
+http://localhost:8080/order/get/{id}
+-----------------------------------
+更改订单状态（POST）
+http://localhost:8080/order/state/update/{id}?state=?
+-----------------------------------
+查询所有商品（GET）
+http://localhost:8080/item/list

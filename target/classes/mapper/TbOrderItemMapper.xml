@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzekai.coffee.mapper.TbOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.lzekai.coffee.domain.TbOrderItem">
+    <!--@mbg.generated-->
+    <!--@Table tb_order_item-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="ingredients" jdbcType="BOOLEAN" property="ingredients" />
+    <result column="unit_price" jdbcType="VARCHAR" property="unitPrice" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, item_id, order_id, ingredients, unit_price, `name`
+  </sql>
+  <select id="selectByExample" parameterType="com.lzekai.coffee.domain.TbOrderItemExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_order_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order_item
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from tb_order_item
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lzekai.coffee.domain.TbOrderItemExample">
+    <!--@mbg.generated-->
+    delete from tb_order_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lzekai.coffee.domain.TbOrderItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_order_item (item_id, order_id, ingredients, 
+      unit_price, `name`)
+    values (#{itemId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{ingredients,jdbcType=BOOLEAN}, 
+      #{unitPrice,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lzekai.coffee.domain.TbOrderItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="ingredients != null">
+        ingredients,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="ingredients != null">
+        #{ingredients,jdbcType=BOOLEAN},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lzekai.coffee.domain.TbOrderItemExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from tb_order_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update tb_order_item
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ingredients != null">
+        ingredients = #{record.ingredients,jdbcType=BOOLEAN},
+      </if>
+      <if test="record.unitPrice != null">
+        unit_price = #{record.unitPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update tb_order_item
+    set id = #{record.id,jdbcType=BIGINT},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      ingredients = #{record.ingredients,jdbcType=BOOLEAN},
+      unit_price = #{record.unitPrice,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lzekai.coffee.domain.TbOrderItem">
+    <!--@mbg.generated-->
+    update tb_order_item
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="ingredients != null">
+        ingredients = #{ingredients,jdbcType=BOOLEAN},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lzekai.coffee.domain.TbOrderItem">
+    <!--@mbg.generated-->
+    update tb_order_item
+    set item_id = #{itemId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      ingredients = #{ingredients,jdbcType=BOOLEAN},
+      unit_price = #{unitPrice,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
